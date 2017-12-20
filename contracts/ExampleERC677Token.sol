@@ -10,7 +10,7 @@ import './ERC677Token.sol';
  *      specification and discussion.
  */
 contract ExampleERC677Token is ERC677Token {
-    function ExampleERC677Token(uint256 _totalSupply) {
+    function ExampleERC677Token(uint256 _totalSupply) public {
         totalSupply = _totalSupply;
         balances[msg.sender] = _totalSupply;
     }

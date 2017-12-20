@@ -6,7 +6,7 @@ import './ERC677Receiver.sol';
 
 
 contract ERC677Token is ERC677, StandardToken {
-    function transferAndCall(address _receiver, uint _amount, bytes _data) {
+    function transferAndCall(address _receiver, uint _amount, bytes _data) public {
         require(super.transfer(_receiver, _amount));
 
         Transfer(msg.sender, _receiver, _amount, _data);
@@ -18,7 +18,7 @@ contract ERC677Token is ERC677, StandardToken {
         }
     }
 
-    function isContract(address _addr) private returns (bool) {
+    function isContract(address _addr) private view returns (bool) {
         uint len;
         assembly {
             len := extcodesize(_addr)
